@@ -13,11 +13,15 @@ const AnimeList = (props) => {
         return anime.map(obj => (
             <Anime anime={obj} />
         ));
-    }
+    };
+
+    const loadingPage = (props) =>{
+        return props.isFetching ? <h2> loading...</h2> : displayAnime(props.anime)
+    };
 
     return (
         <div className="card_container">
-            {props.isFetching ? <h2> Loading... </h2> : displayAnime(props.anime)}
+            {loadingPage(props)}
         </div>
     );
 
